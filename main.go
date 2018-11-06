@@ -4,6 +4,7 @@ import (
 	"fmt"
 
 	"github.com/gin-gonic/gin"
+	"github.com/mmcdole/gofeed"
 )
 
 func SetupRouter() *gin.Engine {
@@ -34,5 +35,9 @@ func SetupRouter() *gin.Engine {
 }
 
 func main() {
+
+	fp := gofeed.NewParser()
+	feed, _ := fp.ParseURL("http://feeds.twit.tv/twit.xml")
+	fmt.Println(feed.Title)
 	fmt.Println("add")
 }
